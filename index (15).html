@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tết Nguyên Đán 2025 - Chào Xuân Ất Tỵ</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ========== BIẾN CSS ========== */
+        :root {
+            --mau-do-tet: #c62828;
+            --mau-do-sang: #e53935;
+            --mau-vang-kim: #f9a825;
+            --mau-vang-mai: #fbc02d;
+            --mau-kem: #fffef7;
+            --mau-kem-dam: #f5f3e8;
+            --mau-den: #1a1a1a;
+            --mau-trang: #ffffff;
+            --font-chu-chinh: 'Poppins', sans-serif;
+            --font-tieu-de: 'Playfair Display', serif;
+        }
+        
+        /* ========== RESET & CƠ BẢN ========== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body {
+            font-family: var(--font-chu-chinh);
+            background-color: var(--mau-kem);
+            color: var(--mau-den);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* ========== HEADER ========== */
+        header {
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            background: linear-gradient(135deg, var(--mau-do-tet), var(--mau-do-sang));
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        header.scrolled { padding: 0.7rem 2rem; }
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-family: var(--font-tieu-de);
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--mau-vang-kim);
+            text-decoration: none;
+        }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a {
+            color: var(--mau-kem);
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+        .nav-links a:hover { color: var(--mau-vang-kim); }
+        
+        .menu-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; }
+        .menu-toggle span { width: 25px; height: 3px; background: var(--mau-vang-kim); border-radius: 2px; }
+
+        /* ========== HERO SECTION ========== */
+        .hero {
+            margin-top: 80px;
+            min-height: 85vh;
+            background: linear-gradient(135deg, var(--mau-do-tet) 0%, var(--mau-do-sang) 100%);
+            display: flex; align-items: center; justify-content: center;
+            position: relative; overflow: hidden;
+        }
+        .hero-content { position: relative; z-index: 2; text-align: center; color: var(--mau-kem); padding: 2rem; }
+        .hero-title { font-family: var(--font-tieu-de); font-size: clamp(2.5rem, 6vw, 5rem); color: var(--mau-vang-kim); margin-bottom: 1rem; }
+        .btn-primary {
+            display: inline-block; padding: 1rem 2.5rem;
+            background: var(--mau-vang-kim); color: var(--mau-do-tet);
+            text-decoration: none; font-weight: 600; border-radius: 50px;
+            box-shadow: 0 6px 20px rgba(249, 168, 37, 0.4); transition: 0.3s;
+        }
+        .btn-primary:hover { transform: translateY(-3px); background: var(--mau-vang-mai); }
+
+        /* ========== SECTION GENERAL ========== */
+        section { padding: 4rem 2rem; max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 3rem; }
+        .section-title { font-family: var(--font-tieu-de); font-size: clamp(2rem, 4vw, 3rem); color: var(--mau-do-tet); }
+        
+        .fade-in { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        /* ========== VIDEO CONTAINER ========== */
+        .video-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: none;
+        }
+
+        /* ========== GRID LAYOUTS ========== */
+        .grid-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 2rem; }
+        .card { background: var(--mau-trang); border-radius: 15px; padding: 2rem; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        
+        .hoat-dong-card { background: var(--mau-trang); border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: 0.3s; }
+        .hoat-dong-card:hover { transform: translateY(-10px); }
+        .hoat-dong-image { height: 220px; overflow: hidden; }
+        .hoat-dong-image img { width: 100%; height: 100%; object-fit: cover; }
+        .hoat-dong-info { padding: 1.5rem; }
+
+        .thu-vien-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; }
+        .thu-vien-item { position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 16/10; }
+        .thu-vien-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .thu-vien-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(198, 40, 40, 0.7); display: flex; align-items: center;
+            justify-content: center; opacity: 0; transition: 0.3s; color: white;
+        }
+        .thu-vien-item:hover .thu-vien-overlay { opacity: 1; }
+
+        /* ========== FOOTER ========== */
+        footer { background: var(--mau-do-tet); color: white; padding: 3rem 2rem; text-align: center; }
+        .social-links { display: flex; justify-content: center; gap: 1.5rem; margin: 1.5rem 0; }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed; top: 70px; left: -100%; width: 100%; height: 100vh;
+                background: var(--mau-do-tet); flex-direction: column; padding-top: 2rem; transition: 0.4s;
+            }
+            .nav-links.active { left: 0; }
+            .menu-toggle { display: flex; }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="header">
+        <nav>
+            <a href="#" class="logo">Tết 2026 <span>🎊</span></a>
+            <button class="menu-toggle" id="menuToggle">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#trang-chu">Trang chủ</a></li>
+                <li><a href="#gioi-thieu">Giới thiệu</a></li>
+                <li><a href="#video-tet">Kinh tế Tết</a></li>
+                <li><a href="#phong-tuc">Phong tục</a></li>
+                <li><a href="#hoat-dong">Hoạt động</a></li>
+                <li><a href="#thu-vien">Thư viện</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="trang-chu">
+        <div class="hero-content">
+            <p style="letter-spacing: 3px; font-weight: 300;">XUÂN BÍNH NGỌ 2026</p>
+            <h1 class="hero-title">Chào Xuân Mới<br>Tết Nguyên Đán</h1>
+            <p style="margin-bottom: 2rem; font-size: 1.2rem;">An khang thịnh vượng - Vạn sự như ý</p>
+            <a href="#gioi-thieu" class="btn-primary">Khám phá Tết ✨</a>
+        </div>
+    </section>
+
+    <section class="gioi-thieu fade-in" id="gioi-thieu">
+        <div class="section-header">
+            <h2 class="section-title">Ý Nghĩa Ngày Tết</h2>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; align-items: center;">
+            <div class="gioi-thieu-text">
+                <h3 style="color: var(--mau-do-tet); margin-bottom: 1rem;">Ngày của sự đoàn viên</h3>
+                <p>Tết Nguyên Đán là thời khắc gia đình sum họp, cùng nhìn lại năm cũ và cầu chúc may mắn cho năm mới Bính Ngọ.</p>
+          </div>
+            <div class="gioi-thieu-image">
+                <img src="https://i.ibb.co/bg94XYkN/35db4c428f9a20aeed0a56fdf3f8d7ac.jpg" alt="Không khí Tết" style="width: 100%; border-radius: 15px;">
+            </div>
+        </div>
+    </section>
+
+        <section class="video-section fade-in" id="video-tet">
+    <div class="section-header">
+        <h2 class="section-title">Ngày Tết Nguyên Đán</h2>
+        <p style="margin-top: 10px; color: #666;">Tìm hiểu về ý nghĩa cũng như nguồn gốc của ngày Tết Nguyên Đán Việt Nam.</p>
+    </div>
+    <div style="max-width: 1100px; margin: 20px auto; padding: 0 15px;">
+        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+            <iframe 
+                src="https://drive.google.com/file/d/1Vg8mZ_9YhS8FKRKp_cAiZRTzwsZ6srRV/preview" 
+                title="Tết Nguyên Đán"
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
+                allow="autoplay; encrypted-media; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+</section>
+
+          <section class="music-section fade-in" id="nhac-tet">
+        <div class="section-header">
+            <h2 class="section-title">Giai Điệu Ngày Tết</h2>
+            <p style="margin-top: 10px; color: #666;">Đang phát: Một Năm Mới Bình An - Sơn Tùng M-TP</p>
+        </div>
+        <div style="max-width: 900px; margin: 0 auto; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); background: #000;">
+            <iframe 
+    src="https://drive.google.com/file/d/1CWh2cDIktFB9b4k0Sx9rkf7MDLXdG3NQ/preview?usp=drivesdk" 
+    width="100%" 
+    height="200"
+    title="Một Năm Mới Bình An - Sơn Tùng M-TP"
+    frameborder="0"
+    allow="autoplay; encrypted-media; picture-in-picture"
+    allowfullscreen>
+</iframe>
+   <p style="text-align:center; margin-top:10px;">
+   </p>
+        </div>
+    </section>
+
+    <section class="phong-tuc fade-in" id="phong-tuc">
+        <div class="section-header">
+            <h2 class="section-title">Phong Tục Tết</h2>
+        </div>
+        <div class="grid-layout">
+            <div class="card">
+                <div style="font-size: 3rem;">🥮</div>
+                <h3 style="color: var(--mau-do-tet);">Bánh Chưng</h3>
+                <p>Gói trọn tinh hoa đất trời trong từng lớp lá. Bánh chưng là món ăn truyền thống không thể thiếu trong ngày Tết cổ truyền của dân tộc Việt Nam. Bánh chưng có hình vuông, tượng trưng cho mặt đất, thể hiện quan niệm về vũ trụ của người xưa. Được làm từ những sản vật quen thuộc như gạo nếp, đậu xanh, thịt lợn, bánh chưng gắn liền với nền văn minh lúa nước. Bánh chưng còn thể hiện lòng biết ơn tổ tiên và đạo lý “uống nước nhớ nguồn”. Qua đó, bánh chưng không chỉ là món ăn mà còn là biểu tượng văn hóa thiêng liêng của dân tộc Việt Nam.</p>
+            </div>
+            <div class="card">
+                <div style="font-size: 3rem;">🧧</div>
+                <h3 style="color: var(--mau-do-tet);">Lì Xì</h3>
+                <p>Trao may mắn và bình an cho năm mới. Lì xì là phong tục truyền thống trong dịp Tết Nguyên đán của người Việt. Những phong bao đỏ tượng trưng cho may mắn, tài lộc và niềm vui, được trao gửi kèm theo lời chúc tốt đẹp đầu năm. Lì xì không đặt nặng giá trị vật chất mà thể hiện tình cảm, sự quan tâm và mong ước bình an dành cho người nhận. Phong tục lì xì góp phần tạo nên không khí vui tươi, ấm áp và gắn kết các thế hệ trong gia đình.</p>
+            </div>
+            <div class="card">
+                <div style="font-size: 3rem;">🙏</div>
+                <h3 style="color: var(--mau-do-tet);">Chúc Tết</h3>
+                <p>Gửi gắm yêu thương đến người thân yêu. Chúc Tết là phong tục truyền thống tốt đẹp của người Việt trong dịp đầu năm mới. Những lời chúc thể hiện mong ước về sức khỏe, hạnh phúc, may mắn và thành công dành cho người thân, bạn bè. Chúc Tết không chỉ mang ý nghĩa tinh thần mà còn giúp gắn kết tình cảm gia đình và cộng đồng, tạo nên không khí vui tươi, ấm áp ngày xuân.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="hoat-dong fade-in" id="hoat-dong">
+        <div class="section-header">
+            <h2 class="section-title">Hoạt Động Xuân</h2>
+        </div>
+        <div class="grid-layout">
+            <div class="hoat-dong-card">
+                <div class="hoat-dong-image"><img src="https://i.ibb.co/PyTw7J4/aa1c0b01b2a9b1a24a13f093b7b838b9.jpg" alt="Văn nghệ"></div>
+                <div class="hoat-dong-info"><h3>Văn Nghệ</h3><p>Giai điệu vui tươi gắn kết cộng đồng. Văn nghệ ngày Tết là hoạt động biểu diễn ca hát, múa, nhảy nhằm tạo không khí vui tươi, rộn ràng trong những ngày đầu năm mới. Văn nghệ góp phần gìn giữ bản sắc văn hóa và gắn kết mọi người trong dịp Tết cổ truyền.</p></div>
+            </div>
+            <div class="hoat-dong-card">
+                <div class="hoat-dong-image"><img src="https://i.ibb.co/kVGhg75Q/4fd0c659bc1745021fcef205dedc9060.jpg" alt="Trò chơi"></div>
+                <div class="hoat-dong-info"><h3>Trò Chơi</h3><p>Gìn giữ nét đẹp văn hóa dân gian. Trò chơi ngày Tết là những hoạt động vui chơi dân gian như kéo co, bịt mắt bắt dê, ô ăn quan… giúp tạo không khí sôi nổi, vui tươi trong dịp đầu năm. Các trò chơi này còn góp phần gắn kết mọi người và gìn giữ nét đẹp văn hóa truyền thống.</p></div>
+            </div>
+            <div class="hoat-dong-card">
+                <div class="hoat-dong-image"><img src="https://i.ibb.co/8nT91TXs/48aef51363bbc6f4460b5691141f0f21.jpg" alt="Pháo hoa"></div>
+                <div class="hoat-dong-info"><h3>Pháo Hoa</h3><p>Thắp sáng hy vọng đêm giao thừa. Pháo hoa là hoạt động thường diễn ra vào thời khắc giao thừa, tượng trưng cho niềm vui, may mắn và khởi đầu mới trong năm mới. Ánh sáng rực rỡ của pháo hoa góp phần tạo không khí náo nhiệt, hân hoan chào đón Tết đến, xuân về.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="thu-vien fade-in" id="thu-vien">
+        <div class="section-header">
+            <h2 class="section-title">Thư Viện Ảnh</h2>
+        </div>
+        <div class="thu-vien-grid">
+            <div class="thu-vien-item">
+                <img src="https://i.ibb.co/9mZ9t8dC/950174fb671fec2c5f30aa59c26a0d25.jpg" alt="Trang trí">
+                <div class="thu-vien-overlay"><span>Trang trí Tết</span></div>
+            </div>
+            <div class="thu-vien-item">
+                <img src="https://i.ibb.co/Ngj3Qbh7/12746ce15410918ee1ad0108a3e7f13f.jpg" alt="Múa lân">
+                <div class="thu-vien-overlay"><span>Múa lân sư rồng</span></div>
+            </div>
+            <div class="thu-vien-item">
+                <img src="https://i.ibb.co/prhgfs1M/48677396c6eef6121827824a56902c52.jpg" alt="Mâm ngũ quả">
+                <div class="thu-vien-overlay"><span>Mâm ngũ quả</span></div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p style="font-size: 1.5rem; color: var(--mau-vang-kim); font-family: var(--font-tieu-de);">🎊 Xuân Bính Ngọ- Vạn Sự Như Ý 🎊</p>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        menuToggle.onclick = () => navLinks.classList.toggle('active');
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.onclick = () => navLinks.classList.remove('active');
+        });
+
+        window.onscroll = () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) header.classList.add('scrolled');
+            else header.classList.remove('scrolled');
+            
+            document.querySelectorAll('.fade-in').forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+                    el.classList.add('visible');
+                }
+            });
+        };
+    </script>
+</body>
+</html>
